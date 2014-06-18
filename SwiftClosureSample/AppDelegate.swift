@@ -8,6 +8,10 @@
 
 import UIKit
 
+func max(num1: Int, num2: Int)->Int {
+    return num1 > num2 ? num2 : num1;
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
@@ -20,11 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
 
-        println("ClosureSample max :");
-        var cl :ClosureSample;
+        var cl :ClosureSample?;
         cl = ClosureSample()
-        println("Max :\(cl.max(23, value2: 55))");
-        println("Volumn :\(cl.volumn(10,  y: 3, z: 49))");
+        
+        cl?.normalClosure()
+        
         return true
     }
 
