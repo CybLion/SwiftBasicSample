@@ -27,7 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var cl :ClosureSample?;
         cl = ClosureSample()
         
-        cl?.normalClosure()
+//        cl?.normalClosure()
+//        cl?.shorthandClosure()
+        
+        cl?.operatorFunction()
         
         return true
     }
