@@ -10,6 +10,7 @@ import Foundation
 
 class ClosureSample {
     var country = ["China", "USA", "Japan", "Russia", "Korea"];
+    var count = Array(country).count()
 
     func max(value1: Int, value2: Int)->Int {
         return value1 > value2 ? value1 : value2
@@ -85,6 +86,10 @@ class ClosureSample {
     }
 
     func tailingClosureFunction(closure:()->()) {
+        
+    }
+    
+    func captureValue() {
         
     }
     

@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         cl?.operatorFunction()
         
+        println("capture :\(cl!.captureValue())")
+        
         return true
     }
 
