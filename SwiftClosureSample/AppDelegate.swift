@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        cl?.normalClosure()
 //        cl?.shorthandClosure()
-        
-        cl?.operatorFunction()
+//        cl?.operatorFunction()
+        cl?.referenceClosure()
         
         println("capture :\(cl!.captureValue())")
         

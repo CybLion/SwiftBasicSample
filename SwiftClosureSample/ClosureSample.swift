@@ -10,8 +10,9 @@ import Foundation
 
 class ClosureSample {
     var country = ["China", "USA", "Japan", "Russia", "Korea"];
-    var count = Array(country).count()
-
+    
+    let constValue = 5;
+    
     func max(value1: Int, value2: Int)->Int {
         return value1 > value2 ? value1 : value2
     }
@@ -91,6 +92,31 @@ class ClosureSample {
     
     func captureValue() {
         
+    }
+    
+    // 将函数闭包作为值返回
+    func incrementValue(incrementValue value:Int) -> () -> Int {
+        var returnValue = 0
+
+        func increment() -> Int {
+            returnValue += value
+            return returnValue
+        }
+
+        return increment
+    }
+    
+
+    func referenceClosure() {
+        let incrementByTen = self.incrementValue(incrementValue: 10)
+        var t = incrementByTen()
+        t = incrementByTen()
+        
+        println("t :\(t)");
+        let incrementByFive = self.incrementValue(incrementValue: 5)
+        t = incrementByFive()
+        println("t :\(t)");
+
     }
     
     
