@@ -91,7 +91,10 @@ class ClosureSample {
     }
     
     func captureValue() {
-        
+        var incrementBy12 = incrementValue(incrementValue: 12)
+        var i = incrementBy12()
+        i = incrementBy12()
+        println("i = \(i)")
     }
     
     // 将函数闭包作为值返回

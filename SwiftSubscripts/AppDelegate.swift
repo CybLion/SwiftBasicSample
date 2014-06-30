@@ -1,39 +1,36 @@
 //
 //  AppDelegate.swift
-//  SwiftClosureSample
+//  SwiftSubscripts
 //
-//  Created by NicholasXu on 14/6/16.
+//  Created by DehengXu on 14/6/25.
 //  Copyright (c) 2014年 DehengXu. All rights reserved.
 //
 
 import UIKit
-
-func max(num1: Int, num2: Int)->Int {
-    return num1 > num2 ? num2 : num1;
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
-        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.backgroundColor = UIColor.lightGrayColor()
         self.window!.makeKeyAndVisible()
+        
+        var subscriptSample = SubscriptSample()
 
-        var cl :ClosureSample?;
-        cl = ClosureSample()
+        //获取 age 的值
+        var age :String = (subscriptSample["age"])
+        println("origin age :\(age)")
         
-        cl?.normalClosure()
-        cl?.shorthandClosure()
-        cl?.operatorFunction()
-        cl?.referenceClosure()
+        //设置 age 的新值
+        subscriptSample["age"] = String(39)
+        age = subscriptSample["age"]
+        println("modified to age :\(age)")
         
-        println("capture :\(cl!.captureValue())")
-        
+        self.window!.rootViewController = UIViewController()
         return true
     }
 
