@@ -10,18 +10,16 @@ import UIKit
 
 class SubscriptSample {
     
-    var teachers = ["age": "33", "birth": "1979"]
-    
-    var infos :NSDictionary = ["age": 33, "birth": 1979]
+    var car = ["name":"BMW", "wheel": "Michealen", "date": "1979"]
 
     subscript(key :String)-> String {
         get {
-            return self.teachers[key]!
+            return self.car[key]!
         }
         
-        set {
-            println("key :\(key), newValue :\(newValue)")
-            self.teachers[key] = newValue
+        set(inputValue) {
+            println("key :\(key), newValue :\(inputValue)")
+            self.car[key] = inputValue
         }
     }
     

@@ -21,14 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var subscriptSample = SubscriptSample()
 
-        //获取 age 的值
-        var age :String = (subscriptSample["age"])
-        println("origin age :\(age)")
+        //获取 name 的值
+        var name :String = (subscriptSample["name"])
+        println("origin age :\(name)")
         
-        //设置 age 的新值
-        subscriptSample["age"] = String(39)
-        age = subscriptSample["age"]
-        println("modified to age :\(age)")
+        //设置 name 的新值
+        subscriptSample["name"] = "VolksWage"
+        name = subscriptSample["name"]
+        println("modified to age :\(name)")
         
         self.window!.rootViewController = UIViewController()
         return true
