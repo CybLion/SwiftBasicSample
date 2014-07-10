@@ -37,6 +37,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let game = SnakesAndLadders()
         game.delegate = tracker
         game.play()
+        //扩展类里面
+       println(  game.asText() )//一共多少个方框格子
+        
+        //扩展类里面
+        let dl1 = Dice(sides: 12, generator: RandomNumber())
+        
+        println(dl1.asText())
+        
+        //集合中的协议
+        let tempThings:[TextRepresentable] = [game,dl1]
+        for thing in tempThings {
+            println("array protocal \(thing.asText())")
+        }
+        
+        // 检查协议的一致性
+        let objects : [AnyObject] = [ Circle(radius: 12.0), Country(area:243_234),  Animal(legs:4)]
+        for object in objects {
+            if let objectWithArea = object as? HasArea{
+                println("The Area is \(objectWithArea.area)")
+            }else{
+                println("No Area")
+            }
+        }
+        
+        
         
         // Override point for customization after application launch.
         self.window!.backgroundColor = UIColor.whiteColor()

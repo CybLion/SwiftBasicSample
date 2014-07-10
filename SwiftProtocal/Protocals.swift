@@ -73,7 +73,7 @@ class RandomNumber:randomItemProtocal{
 }
 
 //协议作为类型 //骰子
-class Dice{
+class Dice {
     let sides: Int
     let generator : randomItemProtocal//协议为类型
     init(sides:Int , generator:randomItemProtocal){
@@ -83,6 +83,8 @@ class Dice{
     func roll() ->Int{//投骰子
         return Int (generator.random() * Double(sides))+1
     }
+    
+
 }
 
 
@@ -107,6 +109,7 @@ class SnakesAndLadders : DiceGame {
         board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
         board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
      }
+    
     var delegate:DicGameDelegate?
     
     func play(){
@@ -153,4 +156,61 @@ class DiceGameTracker:DicGameDelegate{
     }
 }
 
+//扩展中添加协议成员
+
+protocol TextRepresentable{
+    func asText()-> String
+}
+
+extension Dice:TextRepresentable{
+    func asText()->String{
+        return "A\(sides) sided dice"
+    }
+}
+extension SnakesAndLadders:TextRepresentable{
+    func asText()->String{
+        return "A game of Snakes and Ladders with \(finalSquare) squares"
+    }
+}
+
+///可选类型as is //检查是否符合协议
+
+@objc protocol HasArea{
+    var area :Double{get}
+}
+
+class Circle :HasArea{
+    let pi = 3.1415927
+    var radius: Double
+    var area: Double { return pi * radius * radius }
+    init(radius: Double) { self.radius = radius }
+}
+
+class Country:HasArea{
+    var area :Double
+    init (area:Double){ self.area = area }
+}
+
+class Animal {
+    var legs : Int
+    init(legs:Int){self.legs = legs}
+    
+}
+
+//可选协议
+@objc protocol CounterDataSource{
+    @optional func  incrementForCount(count:Int)->Int
+    @optional var fixedIncrement:Int{get}
+}
+class Counter{
+    var count = 0
+    var dataSource:CounterDataSource?
+    func increment(){
+        if let amount = dataSource?.incrementForCount?(count){//可选
+            count += amount
+        }else if let amount = dataSource?.fixedIncrement?{
+            count += amount
+        }
+    }
+}
 
